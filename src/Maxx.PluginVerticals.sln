@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maxx.PluginVerticals.Application", "Maxx.PluginVerticals.Application\Maxx.PluginVerticals.Application.csproj", "{2AD0A354-0B43-4411-AE0D-C8374DC93669}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maxx.PluginVerticals.Core", "Maxx.PluginVerticals.Core\Maxx.PluginVerticals.Core.csproj", "{3D9779BD-33BF-4B6E-ABFB-47CED42D2731}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{1F3FB53C-3D3C-4C40-9C78-AC36EF166513}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\.editorconfig = ..\..\..\.editorconfig
+		..\..\..\readme.md = ..\..\..\readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AD0A354-0B43-4411-AE0D-C8374DC93669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AD0A354-0B43-4411-AE0D-C8374DC93669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AD0A354-0B43-4411-AE0D-C8374DC93669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AD0A354-0B43-4411-AE0D-C8374DC93669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D9779BD-33BF-4B6E-ABFB-47CED42D2731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D9779BD-33BF-4B6E-ABFB-47CED42D2731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D9779BD-33BF-4B6E-ABFB-47CED42D2731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D9779BD-33BF-4B6E-ABFB-47CED42D2731}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21B9939D-5524-42CD-9BEE-A285EC2FAE18}
+	EndGlobalSection
+EndGlobal
