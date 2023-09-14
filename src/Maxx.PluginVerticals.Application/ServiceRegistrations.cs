@@ -4,6 +4,7 @@ using Carter;
 
 using FluentValidation;
 
+using Maxx.PluginVerticals.Core.Constants;
 using Maxx.PluginVerticals.Core.Database;
 
 using Microsoft.EntityFrameworkCore;
@@ -24,14 +25,14 @@ public static class ServiceRegistrations
             .AddCarter()
             .AddValidatorsFromAssembly(assembly);
 
-        builder.Services.AddFeatureManagement(builder.Configuration.GetSection("FeatureFlags")).AddFeatureFilter<PercentageFilter>();
+        builder.Services.AddFeatureManagement().AddFeatureFilter<PercentageFilter>();
 
         return builder;
     }
 
     private static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration config)
     {
-        var connectionString = config.GetConnectionString("Database");
+        var connectionString = config.GetConnectionString(Constants.ConnectionStringKey);
         services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
         return services;

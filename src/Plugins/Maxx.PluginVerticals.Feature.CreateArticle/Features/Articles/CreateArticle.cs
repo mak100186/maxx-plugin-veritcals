@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Routing;
 
 using Riok.Mapperly.Abstractions;
 
-namespace Maxx.PluginVerticals.Core.Features.Articles;
+namespace Maxx.PluginVerticals.Feature.CreateArticle.Features.Articles;
 
 
 public class CreateArticleRequest
