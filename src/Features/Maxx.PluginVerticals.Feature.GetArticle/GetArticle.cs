@@ -3,6 +3,7 @@
 using Maxx.Plugin.Feature.Core.Shared;
 using Maxx.PluginVerticals.Shared.Constants;
 using Maxx.PluginVerticals.Shared.Database;
+using Maxx.PluginVerticals.Shared.Entities;
 
 using MediatR;
 
@@ -11,6 +12,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.FeatureManagement;
+
+using Riok.Mapperly.Abstractions;
 
 namespace Maxx.PluginVerticals.Feature.GetArticle;
 
@@ -54,14 +57,7 @@ public static class GetArticle
                 .Articles
                 .AsNoTracking()
                 .Where(article => article.Id == request.Id)
-                .Select(article => new ArticleResponse
-                {
-                    Id = article.Id,
-                    Title = article.Title,
-                    Content = article.Content,
-                    CreatedOnUtc = article.CreatedOnUtc,
-                    PublishedOnUtc = article.PublishedOnUtc
-                })
+                .Select(article => new Mappings().ToResponse(article))
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (articleResponse is null)
@@ -102,4 +98,10 @@ public class GetArticleEndpoint : ICarterModule
             return Results.Ok(result.Value);
         });
     }
+}
+
+[Mapper]
+public partial class Mappings
+{
+    public partial ArticleResponse ToResponse(Article data);
 }
