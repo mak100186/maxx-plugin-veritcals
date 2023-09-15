@@ -1,4 +1,4 @@
-﻿namespace Maxx.PluginVerticals.Core.Shared;
+﻿namespace Maxx.Plugin.Feature.Core.Shared;
 
 public class Result
 {

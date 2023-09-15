@@ -1,8 +1,8 @@
-﻿using Maxx.PluginVerticals.Core.Entities;
+﻿using Maxx.PluginVerticals.Shared.Entities;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace Maxx.PluginVerticals.Core.Database;
+namespace Maxx.PluginVerticals.Shared.Database;
 public class ApplicationDbContext: DbContext
 {
     private static DbContextOptions GetDbContextOptionsForMigrations()

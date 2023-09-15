@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.Loader;
 
-namespace Maxx.PluginVerticals.Application;
+namespace Maxx.PluginVerticals.Application.Dependency;
 
 public class AssemblyLoader : AssemblyLoadContext
 {

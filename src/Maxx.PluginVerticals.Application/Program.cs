@@ -1,8 +1,8 @@
 
 using Carter;
-
-using Maxx.PluginVerticals.Application;
-using Maxx.PluginVerticals.Core.Extensions;
+using Maxx.PluginVerticals.Application.Dependency;
+using Maxx.PluginVerticals.Application.Extensions;
+using Maxx.PluginVerticals.Shared.Extensions;
 
 using Serilog;
 
@@ -13,7 +13,7 @@ try
     var builder = WebApplication.CreateBuilder(args);
         
     builder.Configure(typeof(Program).Assembly);
-
+    
     var app = builder.Build();
 
     if (app.Environment.IsDevelopment())

@@ -2,9 +2,9 @@
 
 using FluentValidation;
 
-using Maxx.PluginVerticals.Core.Database;
-using Maxx.PluginVerticals.Core.Entities;
-using Maxx.PluginVerticals.Core.Shared;
+using Maxx.Plugin.Feature.Core.Shared;
+using Maxx.PluginVerticals.Shared.Database;
+using Maxx.PluginVerticals.Shared.Entities;
 
 using MediatR;
 
@@ -21,6 +21,7 @@ public class CreateArticleRequest
 {
     public string Title { get; set; } = string.Empty;
     public string Content { get; set; } = string.Empty;
+    public DateTime PublishedOn { get; set; }
 }
 
 public static class CreateArticle
@@ -30,6 +31,8 @@ public static class CreateArticle
         public string Title { get; set; } = string.Empty;
 
         public string Content { get; set; } = string.Empty;
+
+        public DateTime PublishedOn { get; set; }
     }
 
     public class Validator : AbstractValidator<Command>
@@ -38,6 +41,7 @@ public static class CreateArticle
         {
             RuleFor(c => c.Title).NotEmpty();
             RuleFor(c => c.Content).NotEmpty();
+            RuleFor(c => c.PublishedOn).LessThan(p => DateTime.UtcNow);
         }
     }
 
@@ -62,13 +66,9 @@ public static class CreateArticle
                     validationResult.ToString()));
             }
 
-            var article = new Article
-            {
-                Id = Guid.NewGuid(),
-                Title = request.Title,
-                Content = request.Content,
-                CreatedOnUtc = DateTime.UtcNow
-            };
+            var article = new Mappings().ToData(request);
+            article.Id = Guid.NewGuid();
+            article.CreatedOnUtc = DateTime.UtcNow;
 
             _dbContext.Add(article);
 
@@ -85,7 +85,7 @@ public class CreateArticleEndpoint : ICarterModule
     {
         app.MapPost("api/articles", async (CreateArticleRequest request, ISender sender) =>
         {
-            var command = new RequestToDto().RequestToCommand(request);
+            var command = new Mappings().ToCommand(request);
 
             var result = await sender.Send(command);
 
@@ -97,7 +97,8 @@ public class CreateArticleEndpoint : ICarterModule
 }
 
 [Mapper]
-public partial class RequestToDto
+public partial class Mappings
 {
-    public partial CreateArticle.Command RequestToCommand(CreateArticleRequest request);
+    public partial CreateArticle.Command ToCommand(CreateArticleRequest request);
+    public partial Article ToData(CreateArticle.Command command);
 }

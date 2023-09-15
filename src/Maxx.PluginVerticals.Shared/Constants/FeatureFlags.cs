@@ -1,4 +1,4 @@
-﻿namespace Maxx.PluginVerticals.Core.Constants;
+﻿namespace Maxx.PluginVerticals.Shared.Constants;
 
 public static class FeatureFlags
 {

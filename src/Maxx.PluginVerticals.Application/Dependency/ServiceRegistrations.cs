@@ -6,7 +6,7 @@ using FluentValidation;
 
 using LinqKit;
 
-using Maxx.PluginVerticals.Core.Extensions;
+using Maxx.PluginVerticals.Shared.Extensions;
 
 using Microsoft.FeatureManagement;
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -15,7 +15,7 @@ using Serilog;
 
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Maxx.PluginVerticals.Application;
+namespace Maxx.PluginVerticals.Application.Dependency;
 
 public static class ServiceRegistrations
 {
@@ -62,7 +62,7 @@ public static class ServiceRegistrations
 
         foreach (var pluginName in pluginNames)
         {
-            var fullPathToPlugin = Extensions.IsDevelopmentEnvironment()
+            var fullPathToPlugin = Extensions.Extensions.IsDevelopmentEnvironment()
                 ? GetFullPathToPluginOnLocal(pluginName)
                 : GetFullPathToPluginOnEnvironment(pluginName);
 
@@ -88,7 +88,7 @@ public static class ServiceRegistrations
         var assembliesArray = assemblies.ToArray();
 
         services
-            .AddCarter(new (assembliesArray))
+            .AddCarter(new(assembliesArray))
             .AddMediatR(config => config.RegisterServicesFromAssemblies(assembliesArray))
             .AddValidatorsFromAssemblies(assembliesArray);
 
@@ -128,23 +128,4 @@ public static class ServiceRegistrations
 
         return pluginLocation;
     }
-
-    #region create instance from typeName
-
-    public static object CreateInstance(this Assembly assembly, string typeName, params object[] paramArray)
-    {
-        if (paramArray.Length > 0)
-        {
-            var culture = Thread.CurrentThread.CurrentCulture;
-            var activationAttrs = Array.Empty<object>();
-            return assembly.CreateInstance(typeName, false, BindingFlags.CreateInstance, null, paramArray, culture, activationAttrs)!;
-        }
-
-        return assembly.CreateInstance(typeName)!;
-    }
-
-    public static T CreateInstance<T>(this Assembly assembly, string typeName, params object[] paramArray) => (T)CreateInstance(assembly, typeName, paramArray);
-
-    #endregion
-
 }

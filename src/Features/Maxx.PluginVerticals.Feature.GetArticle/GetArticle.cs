@@ -1,8 +1,8 @@
 ﻿using Carter;
 
-using Maxx.PluginVerticals.Core.Constants;
-using Maxx.PluginVerticals.Core.Database;
-using Maxx.PluginVerticals.Core.Shared;
+using Maxx.Plugin.Feature.Core.Shared;
+using Maxx.PluginVerticals.Shared.Constants;
+using Maxx.PluginVerticals.Shared.Database;
 
 using MediatR;
 

@@ -1,4 +1,4 @@
-﻿namespace Maxx.PluginVerticals.Core.Extensions;
+﻿namespace Maxx.PluginVerticals.Application.Extensions;
 public static class Extensions
 {
     public static bool IsDevelopmentEnvironment()

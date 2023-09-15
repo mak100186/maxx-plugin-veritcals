@@ -1,4 +1,4 @@
-﻿namespace Maxx.PluginVerticals.Core.Entities;
+﻿namespace Maxx.PluginVerticals.Shared.Entities;
 
 public class Article
 {

@@ -7,11 +7,11 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\..\Maxx.PluginVerticals.Core\Maxx.PluginVerticals.Core.csproj">
+    <ProjectReference Include="..\..\Maxx.PluginVerticals.Shared\Maxx.PluginVerticals.Shared.csproj" >
       <Private>false</Private>
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
   </ItemGroup>
-
 </Project>
