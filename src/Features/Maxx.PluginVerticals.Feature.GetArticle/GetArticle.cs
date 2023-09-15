@@ -1,5 +1,6 @@
 ﻿using Carter;
 
+using Maxx.PluginVerticals.Core.Constants;
 using Maxx.PluginVerticals.Core.Database;
 using Maxx.PluginVerticals.Core.Shared;
 
@@ -11,7 +12,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.FeatureManagement;
 
-namespace Maxx.PluginVerticals.Core.Features.Articles;
+namespace Maxx.PluginVerticals.Feature.GetArticle;
 
 public class ArticleResponse
 {
@@ -22,7 +23,7 @@ public class ArticleResponse
     public string Content { get; set; } = string.Empty;
 
     public string? Preview { get; set; }
-    
+
     public DateTime CreatedOnUtc { get; set; }
 
     public DateTime? PublishedOnUtc { get; set; }

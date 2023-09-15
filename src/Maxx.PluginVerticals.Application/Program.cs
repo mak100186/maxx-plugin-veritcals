@@ -2,6 +2,7 @@
 using Carter;
 
 using Maxx.PluginVerticals.Application;
+using Maxx.PluginVerticals.Core.Extensions;
 
 using Serilog;
 

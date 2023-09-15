@@ -8,12 +8,13 @@ using Maxx.PluginVerticals.Core.Shared;
 
 using MediatR;
 
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 using Riok.Mapperly.Abstractions;
 
-namespace Maxx.PluginVerticals.Feature.CreateArticle.Features.Articles;
+namespace Maxx.PluginVerticals.Feature.CreateArticle;
 
 
 public class CreateArticleRequest
@@ -82,7 +83,7 @@ public class CreateArticleEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost<IResult>("api/articles", async (CreateArticleRequest request, ISender sender) =>
+        app.MapPost("api/articles", async (CreateArticleRequest request, ISender sender) =>
         {
             var command = new RequestToDto().RequestToCommand(request);
 

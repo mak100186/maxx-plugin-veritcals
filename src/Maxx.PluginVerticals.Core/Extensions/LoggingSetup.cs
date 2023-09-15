@@ -1,7 +1,11 @@
-﻿using Serilog;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+
+using Serilog;
 using Serilog.Extensions.Hosting;
 
-namespace Maxx.PluginVerticals.Application;
+namespace Maxx.PluginVerticals.Core.Extensions;
 
 public static class LoggingSetup
 {
