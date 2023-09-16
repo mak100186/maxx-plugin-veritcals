@@ -19,7 +19,7 @@ namespace Maxx.PluginVerticals.Application.Dependency;
 
 public static class ServiceRegistrations
 {
-    public static IHostApplicationBuilder Configure(this IHostApplicationBuilder builder, Assembly assembly)
+    public static void Configure(this IHostApplicationBuilder builder, Assembly assembly)
     {
         builder.Services
             .AddEndpointsApiExplorer()
@@ -28,8 +28,6 @@ public static class ServiceRegistrations
             .AddFeatures(builder.Configuration, assembly);
 
         builder.Services.AddFeatureManagement().AddFeatureFilter<PercentageFilter>();
-
-        return builder;
     }
 
     private static Action<SwaggerGenOptions> GetSwaggerGenAction(string[] paths)
@@ -43,12 +41,12 @@ public static class ServiceRegistrations
         };
     }
 
-    public static IServiceCollection AddFeatures(this IServiceCollection services, IConfigurationManager configuration, Assembly assembly)
+    private static void AddFeatures(this IServiceCollection services, IConfiguration configuration, Assembly assembly)
     {
         var pluginNames = configuration.GetSection("features").Get<string[]>();
 
         var appFolder = new FileInfo(assembly.Location).DirectoryName!;
-        if (pluginNames == null || !pluginNames.Any())
+        if (pluginNames is not { Length: 0 })
         {
             var appsettingsPath = Path.Combine(appFolder, "appsettings.json");
             var configJson = File.Exists(appsettingsPath) ? $"FILE CONTENT FOLLOWS\n{File.ReadAllText(appsettingsPath)}" : $"CANNOT FIND {appsettingsPath}";
@@ -93,8 +91,6 @@ public static class ServiceRegistrations
             .AddValidatorsFromAssemblies(assembliesArray);
 
         services.Configure(GetSwaggerGenAction(xmlDocFiles.ToArray()));
-
-        return services;
     }
 
     private static string GetFullPathToPluginOnLocal(string relativePath)
