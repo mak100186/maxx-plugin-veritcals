@@ -1,9 +1,8 @@
 ﻿using Carter;
 
-using Maxx.Plugin.Feature.Core.Shared;
-using Maxx.PluginVerticals.Shared.Constants;
 using Maxx.PluginVerticals.Shared.Database;
 using Maxx.PluginVerticals.Shared.Entities;
+using Maxx.PluginVerticals.Shared.Shared;
 
 using MediatR;
 
@@ -17,6 +16,12 @@ using Riok.Mapperly.Abstractions;
 
 namespace Maxx.PluginVerticals.Feature.GetArticle;
 
+public static class FeatureFlags
+{
+    public const string ClipArticleContent = "ClipArticleContent";
+
+    public const string ShowArticlePreview = "ShowArticlePreview";
+}
 public class ArticleResponse
 {
     public Guid Id { get; set; }

@@ -107,7 +107,7 @@ public static class ServiceRegistrations
                 Path.GetDirectoryName(
                     Path.GetDirectoryName(
                         Path.GetDirectoryName(
-                            Path.GetDirectoryName(typeof(Program).Assembly.Location)))))));
+                            Path.GetDirectoryName(typeof(Program).Assembly.Location)!))!)!)!));
 
         var pluginLocation = Path.GetFullPath(Path.Combine(root, relativePath.Replace('\\', Path.DirectorySeparatorChar)));
         pluginLocation = Path.Combine(pluginLocation, $"bin\\Debug\\net8.0\\{dllName}.dll");

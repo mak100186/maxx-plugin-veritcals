@@ -1,4 +1,4 @@
-﻿namespace Maxx.Plugin.Feature.Core.Shared;
+﻿namespace Maxx.PluginVerticals.Shared.Shared;
 
 public record Error(string Code, string Message)
 {

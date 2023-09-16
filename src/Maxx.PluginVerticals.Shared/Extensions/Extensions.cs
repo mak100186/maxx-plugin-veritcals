@@ -8,17 +8,20 @@ using Microsoft.Extensions.Hosting;
 namespace Maxx.PluginVerticals.Shared.Extensions;
 public static class Extensions
 {
-    public static string? GetEnvironment()
+    private const string ConnectionStringKey = "Database";
+
+    private static string? GetEnvironment()
     {
         return Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
     }
-    public static IConfigurationRoot GetConfigurations()
+
+    private static IConfigurationRoot GetConfigurations()
     {
         var environment = GetEnvironment() ?? "Development";
 
         return new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")
-            .AddJsonFile("appsettings.Development.json", optional: true)
+            .AddJsonFile($"appsettings.{environment}.json", optional: true)
             .AddEnvironmentVariables()
             .AddInMemoryCollection(new[]
             {
@@ -29,13 +32,13 @@ public static class Extensions
 
     public static string GetConnectionString()
     {
-        return GetConfigurations().GetConnectionString(Constants.Constants.ConnectionStringKey)!;
+        return GetConfigurations().GetConnectionString(ConnectionStringKey)!;
     }
     
 
     public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration config)
     {
-        var connectionString = config.GetConnectionString(Constants.Constants.ConnectionStringKey);
+        var connectionString = config.GetConnectionString(ConnectionStringKey);
         services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
         return services;

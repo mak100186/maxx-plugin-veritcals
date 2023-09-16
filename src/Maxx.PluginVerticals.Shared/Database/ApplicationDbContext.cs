@@ -14,7 +14,7 @@ public class ApplicationDbContext: DbContext
     }
 
     public ApplicationDbContext()
-        : base(GetDbContextOptionsForMigrations()) { }
+        : this(GetDbContextOptionsForMigrations()) { }
 
     public ApplicationDbContext(DbContextOptions options)
         : base(options)

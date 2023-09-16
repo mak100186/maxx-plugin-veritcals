@@ -2,9 +2,9 @@
 
 using FluentValidation;
 
-using Maxx.Plugin.Feature.Core.Shared;
 using Maxx.PluginVerticals.Shared.Database;
 using Maxx.PluginVerticals.Shared.Entities;
+using Maxx.PluginVerticals.Shared.Shared;
 
 using MediatR;
 

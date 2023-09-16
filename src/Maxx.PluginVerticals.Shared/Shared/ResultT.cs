@@ -1,4 +1,4 @@
-﻿namespace Maxx.Plugin.Feature.Core.Shared;
+﻿namespace Maxx.PluginVerticals.Shared.Shared;
 
 public class Result<TValue> : Result
 {
